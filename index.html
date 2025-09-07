@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Device Security Check</title>
+<style>
+  :root{--bg:#0b0f14;--fg:#e8edf2;--accent:#ff3b30;--ok:#2ecc71}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{display:flex;align-items:center;justify-content:center;min-height:100%}
+  .card{width:min(560px,92vw);border:1px solid #22303c;border-radius:18px;padding:22px 20px;background:#0f151c;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+  .row{display:flex;gap:12px;align-items:center}
+  .badge{background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.2px}
+  h1{margin:12px 0 6px;font-size:20px}
+  p{margin:8px 0;opacity:.9;line-height:1.4}
+  .progress{height:8px;background:#1b2631;border-radius:99px;overflow:hidden;margin:14px 0 4px}
+  .bar{height:100%;width:0;background:var(--accent);transition:width .2s}
+  .fineprint{font-size:12px;opacity:.6}
+  .reveal{display:none}
+  .tips{display:grid;gap:8px;margin-top:10px}
+  .tip{background:#0b1721;border:1px solid #1e2a36;border-radius:12px;padding:10px}
+  .cta{margin-top:12px;display:inline-block;background:#1e7ef3;color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:600;cursor:pointer;text-decoration:none}
+  .ok{color:var(--ok);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" id="card">
+    <div class="row">
+      <span class="badge">SECURITY ALERT</span>
+      <span>Unverified QR code scanned</span>
+    </div>
+    <h1>Quick device safety check in progress…</h1>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <p class="fineprint">Analyzing link reputation, tracking params, and requested permissions…</p>
+
+    <div class="reveal" id="reveal">
+      <h1 class="ok">Good news: this was a demo ✅</h1>
+      <p>QR codes can point anywhere. Here’s how to stay safe next time:</p>
+      <div class="tips">
+        <div class="tip">• Preview the URL before opening. If it’s shortened or weird, don’t proceed.</div>
+        <div class="tip">• Don’t enter passwords/payment after scanning a public QR—with Wi-Fi portals especially.</div>
+        <div class="tip">• Watch for requests to install apps, profiles, or “security tools.” Close the page.</div>
+        <div class="tip">• If something pops up full-screen and urgent, back out. Visit the site manually instead.</div>
+      </div>
+      <a class="cta" href="#" onclick="location.href='https://haveibeenpwned.com/Passwords';return false;">Learn a safety habit</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Lightweight “drama” that flips to the reveal in ~3 seconds.
+  const bar = document.getElementById('bar');
+  const reveal = document.getElementById('reveal');
+  let p = 0;
+  const t = setInterval(()=>{
+    p = Math.min(100, p + (8 + Math.random()*14));
+    bar.style.width = p + '%';
+    if(p >= 100){
+      clearInterval(t);
+      setTimeout(()=>{ reveal.style.display='block'; }, 300);
+    }
+  }, 260);
+</script>
+</body>
+</html>
