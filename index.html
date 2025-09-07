@@ -31,18 +31,18 @@
       <span class="badge">SECURITY ALERT</span>
       <span>Unverified QR code scanned</span>
     </div>
-    <h1>Quick device safety check in progress…</h1>
+    <h1>Quick device information check in progress…</h1>
     <div class="progress"><div class="bar" id="bar"></div></div>
     <p class="fineprint">Analyzing Address, Name, Social Security…</p>
 
     <div class="reveal" id="reveal">
-      <h1 class="ok">Good news: this was a demo ✅</h1>
+      <h1 class="ok">Good news: this was a prank ✅</h1>
       <p>QR codes can point anywhere. Here’s how to stay safe next time:</p>
       <div class="tips">
         <div class="tip">• Preview the URL before opening. If it’s shortened or weird, don’t proceed.</div>
         <div class="tip">• Don’t enter passwords/payment after scanning a public QR—with Wi-Fi portals especially.</div>
         <div class="tip">• Watch for requests to install apps, profiles, or “security tools.” Close the page.</div>
-        <div class="tip">• If something pops up full-screen and urgent, back out. Visit the site manually instead.</div>
+        <div class="tip">• Listen to your husband and give him plenty of kisses as a thank you.</div>
       </div>
       <a class="cta" href="#" onclick="location.href='https://www.youtube.com/watch?v=YgzrslSRdjI';return false;">Learn a safety habit</a>
     </div>
@@ -59,7 +59,7 @@
     bar.style.width = p + '%';
     if(p >= 100){
       clearInterval(t);
-      setTimeout(()=>{ reveal.style.display='block'; }, 300);
+      setTimeout(()=>{ reveal.style.display='block'; }, 1000);
     }
   }, 260);
 </script>
