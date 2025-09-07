@@ -50,18 +50,19 @@
 </div>
 
 <script>
-  // Lightweight “drama” that flips to the reveal in ~3 seconds.
-  const bar = document.getElementById('bar');
+   const bar = document.getElementById('bar');
   const reveal = document.getElementById('reveal');
   let p = 0;
-  const t = setInterval(()=>{
-    p = Math.min(100, p + (8 + Math.random()*14));
+
+  // Interval runs every 300ms, increasing 2–4% each step
+  const t = setInterval(() => {
+    p = Math.min(100, p + (2 + Math.random() * 2));
     bar.style.width = p + '%';
-    if(p >= 100){
+    if (p >= 100) {
       clearInterval(t);
-      setTimeout(()=>{ reveal.style.display='block'; }, 1000);
+      setTimeout(() => { reveal.style.display = 'block'; }, 500);
     }
-  }, 260);
+  }, 300);
 </script>
 </body>
 </html>
