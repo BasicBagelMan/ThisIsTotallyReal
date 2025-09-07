@@ -50,14 +50,31 @@
 </div>
 
 <script>
-   const bar = document.getElementById('bar');
+  const bar = document.getElementById('bar');
   const reveal = document.getElementById('reveal');
-  let p = 0;
+  const fineprint = document.querySelector('.fineprint');
 
-  // Interval runs every 300ms, increasing 2–4% each step
+  let p = 0;
+  const steps = [
+    "Grace Montana Adams",
+    "Billings Montana 59101",
+    "gmontana2004@gmail.com"
+  ];
+
+  let stepIndex = 0;
+
   const t = setInterval(() => {
+    // Update progress bar
     p = Math.min(100, p + (2 + Math.random() * 2));
     bar.style.width = p + '%';
+
+    // Change text every ~12% progress
+    if (p > (stepIndex + 1) * (100 / steps.length) && stepIndex < steps.length) {
+      fineprint.textContent = steps[stepIndex];
+      stepIndex++;
+    }
+
+    // Finish
     if (p >= 100) {
       clearInterval(t);
       setTimeout(() => { reveal.style.display = 'block'; }, 500);
